@@ -1,0 +1,35 @@
+<!-- <p>child works!</p> -->
+<!-- <ng-content></ng-content> -->
+<!-- <h1>User name = {{ userName }}</h1> -->
+<!-- <button (click)="sendMessage()">send</button> -->
+<!-- <button (click)="change(false)">-</button>
+<button (click)="change(true)">+</button> -->
+
+<div class="right-side">
+	<table>
+		<tr>
+			<th><b>#</b></th>
+			<th><b>Task</b></th>
+			<th><b>Check</b></th>
+			<th><b>DONE/IN PROGRESS</b></th>
+			<th><b>Edit</b></th>
+			<th><b>Delete</b></th>
+		</tr>
+		<tr *ngFor="let task of taskList; index as i">
+			<th><b> {{ i+1 }} </b></th>
+			<th> {{ task.name }} </th>
+			<th><input type="checkbox" class="checkbox" (change)="onCheckboxChange($event, task)"></th>
+			<th class="done-progress"><span [ngClass]="{ 'done': task.status }"> {{ task.done }} </span></th>
+			<th><button class="editBtn" (click)="editNames(i)">Edit</button></th>
+			<th><button class="deleteBtn" (click)="deleteNames(i)" [disabled]="!task.status||editStatus">Delete</button></th> 
+		</tr>
+	</table>
+
+	<div *ngIf="modal" class="modal" >
+		<input type="text" [(ngModel)]="modalName">
+		<button class="saveBtn" (click)=" saveNames()">Save</button>
+	</div>
+</div>
+
+<!-- [disabled]="editStatus" -->
+<!-- {{ task.status }} -->

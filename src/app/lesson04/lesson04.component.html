@@ -1,0 +1,65 @@
+<p>lesson04 works!</p>
+
+<div class="container">
+	<h1>My phone book!</h1>
+	<hr>
+	<input type="text" placeholder="search text goes here" [(ngModel)]="field"> 
+	<button (click)="addPhones()">Add phone</button> 
+
+	<ng-container *ngIf="isOpenModal">
+		<div class="modal-wrapper">
+			<div class="modal">
+				<h2>Add phone</h2>
+				<hr>
+				<input type="text" placeholder="first name goes here" [(ngModel)]="mFirstName">
+				<input type="text" placeholder="last name goes here" [(ngModel)]="mLastName">
+				<input type="text" placeholder="pnone number goes here" [(ngModel)]="mNum">
+				<hr>
+				<button class="saveBtn" (click)="savePhones()">Save</button>
+			</div>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="isOpenModal2">
+		<div class="modal-wrapper">
+			<div class="modal">
+				<h2>Add phone</h2>
+				<hr>
+				<input type="text" placeholder="first name goes here" [(ngModel)]="mFirstName">
+				<input type="text" placeholder="last name goes here" [(ngModel)]="mLastName">
+				<input type="text" placeholder="pnone number goes here" [(ngModel)]="mNum">
+				<hr>
+				<button class="saveBtn" (click)="saveEditPhones()">Save</button>
+			</div>
+		</div>
+	</ng-container>
+	
+
+	<div class="right-side">
+		<table>
+			<tr>
+				<th><b>First name 
+					<span (click)="changeSort()"> <i [class]="iconClass" class="iconClass"></i></span>
+				</b></th>
+				<th><b>Last name
+					<span (click)="changeSort()"> <i [class]="iconClass" class="iconClass"></i></span>
+				</b></th>
+				<th><b>Number
+					<span (click)="changeSort()"> <i [class]="iconClass" class="iconClass"></i></span>
+				</b></th>
+				<th><b>Edit</b></th>
+				<th><b>Delete</b></th>
+			</tr>
+			<tr *ngFor="let person of people | search:field | sort:type ; index as i;" > 
+				<th> {{ person.firstName }} </th>
+				<th> {{ person.lastName }} </th>
+				<th> {{ person.number }} </th>
+				<th><button class="editBtn" (click)="editNames(i)">Edit</button></th> 
+				<th><button class="deleteBtn" (click)="deleteNames(i)" [disabled]="editStatus">Delete</button></th> 
+				
+			</tr>
+		</table>
+	
+	</div>
+</div>
+

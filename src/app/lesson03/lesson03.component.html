@@ -1,0 +1,17 @@
+<!-- 
+<h1>Count = {{ count }}</h1>
+<app-child (changeCount)="checkStatus($event)"></app-child>
+ -->
+<!-- <p>lesson03 works!</p> -->
+
+
+<div class="container">
+	<h1>Plan your day!</h1>
+	<h2>User: Ivan Ivanov. Count of task {{ count }}</h2>
+	<hr>
+	<input type="text" [(ngModel)]="userName">
+	<button (click)="addTasks()">Add</button>
+
+	<app-child (decrease)="count = count - 1" [tasks]="taskList"></app-child>
+</div>
+

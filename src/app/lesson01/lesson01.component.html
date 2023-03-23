@@ -1,0 +1,18 @@
+<p>lesson01 works!</p>
+<!-- <hr>
+<h2>Age {{ age }}</h2>
+<button on-click="changeColor()">Change</button>
+<h1 [style.color]="isColor ? 'green' : 'red'">Some text</h1> -->
+
+<h1>Angular list of prohibited words:</h1>
+	<div class="wrapper">
+		<h2>Bad words: <span class="bad-words">{{ badWords }}</span></h2>
+		<div>
+			<input class="input-word" type="text">
+			<button class="add-btn" on-click="addWords()">Add</button>
+			<button class="reset-btn" on-click="resetWords()">Reset</button>
+		</div>
+		<textarea class="textarea" placeholder="text here.."></textarea>
+		<button class="censor-btn" on-click="censorWords()">Censor</button>
+	</div>
+

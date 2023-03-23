@@ -1,0 +1,38 @@
+<p>lesson02 works!</p>
+
+
+<h1>Angular users task</h1>
+<div class="container">
+	<div class="left-side">
+		<h2>Login</h2>
+		<form class="form">
+			<input type="text" class="login" placeholder="Enter login" [(ngModel)]="newName" [ngModelOptions]="{standalone: true}">
+			<h2>Password</h2>
+			<input type="text" class="password" placeholder="Enter password" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">
+			<h2>Email adress</h2>
+			<input type="text" class="email" placeholder="Enter email" [(ngModel)]="newEmail" [ngModelOptions]="{standalone: true}">
+		</form>
+		<button *ngIf="!editStatus" class="add-user" (click)="addNames()" [disabled]="!newName">Add user</button>
+		<button *ngIf="editStatus" class="save-user" (click)="saveNames()">Save user</button>
+	</div>
+	<div class="right-side">
+		<table>
+			<tr>
+				<th><b>#</b></th>
+				<th><b>Login</b></th>
+				<th><b>Password</b></th>
+				<th><b>Email</b></th>
+				<th><b>Edit</b></th>
+				<th><b>Delete</b></th>
+			</tr>
+			<tr *ngFor="let user of users; index as i">
+				<th> {{ i+1 }} </th>
+				<th> {{ user.name }} </th>
+				<th> {{ user.login }} </th>
+				<th> {{ user.password }} </th>
+				<th><button class="editBtn" (click)="editNames(i)">Edit</button></th>
+				<th><button class="deleteBtn" (click)="deleteNames(i)" [disabled]="editStatus">Delete</button></th>
+			</tr>
+		</table>
+	</div>
+</div>
